@@ -1,4 +1,6 @@
 //Global Variables & Other Items (Classes)
+int scoreLeft = 0;
+int scoreRight = 0;
 ArrayList<Shape> shapes = new ArrayList<Shape>();
 Boolean instructionsOn=false;
 //
@@ -9,10 +11,11 @@ Shape instructions = new Shape (0, 0, 300, 300) { //These hardcoded variables ar
   color colourDayMode, resetNightMode;
   //No Constructor Needed
   void draw() {
-    fill(#FFFFFF); //White, not night mode compatible due to BLUE
+    fill(0); //White, not night mode compatible due to BLUE
     rect(x, y, w, h); //background for instructions menu
     //Text Code Here, reminder about contract of inks
-    fill(#FFFFFF); //Reset White, from colours of ink
+    fill(0); //Reset White, from colours of ink
+    
   }
   //Methods for Possible Text Drawing
   //
@@ -34,6 +37,7 @@ Shape instructions = new Shape (0, 0, 300, 300) { //These hardcoded variables ar
   float hGetter() {
     return h;
   }
+ 
   color colourDayModeGetter() {
     return colourDayMode;
   }
@@ -42,31 +46,45 @@ Shape instructions = new Shape (0, 0, 300, 300) { //These hardcoded variables ar
   }
 }
 ; //Necessary Code (recall ";" end lines of code)
+
+
+
 //
 void setup()
 {
   size(900, 680); //fullScreen(); //displayWidth, displayHeight
   display(); //Landscape manditory
+  
   //
   //Local Variables & Object Setup
   //
   //Instructions, Features, and Hints for Easter Eggs
-  shapes.add(instructions); //Elememt 0
+   shapes.add(instructions);//Elememt 0
   //
   //Paddles and Ball
   int yDiameter;
-  int xDiameter = yDiameter = appWidth*1/90;
-  int rectWidth = appWidth*1/80;
-  int rectHeight = appHeight*1/2;
-  int colourDayRectLeft = color(int( random(50, 200) ), int( random(50, 200) ), int( random(50, 200) ));
-  int colourNightRectLeft = color(int( random(50, 200) ), int( random(50, 200) ), int( random(0) ));
-  int colourDayRectRight = color(int( random(50, 200) ), int( random(50, 200) ), int( random(50, 200) ));
-  int colourNightRectRight = color(int( random(50, 200) ), int( random(50, 200) ), int( random(0) ));
-  int colourDayBall = color(int( random(50, 200) ), int( random(50, 200) ), int( random(50, 200) ));
-  int colourNightBall = color(int( random(50, 200) ), int( random(50, 200) ), int( random(0) ));
+  int xDiameter = yDiameter = appWidth*2/90;
+  int rectWidth = appWidth*2/80;
+  int rectHeight = appHeight*1/5;
+  
+  int colourDayRectLeft = color(int(255), int(255), int(255));
+  
+  int colourNightRectLeft = color(int(255), int(255), int(255));
+  
+  int colourDayRectRight = color(int(255), int(255), int(255));
+  
+  int colourNightRectRight = color(int(255), int(255), int(255));
+  
+  int colourDayBall = color(int(255), int(255), int(255));
+  
+  int colourNightBall = color(int(255), int(255), int(255));
+  
   Rectangle rHexLeft = new Rectangle(appWidth*1/40, appHeight*1/4, rectWidth, rectHeight, colourDayRectLeft, colourNightRectLeft);
+  
   Rectangle rHexRight = new Rectangle(appWidth*38/40, appHeight*1/4, rectWidth, rectHeight, colourDayRectRight, colourNightRectRight);
+  
   Circle cHex = new Circle(appWidth*1/2, appHeight*1/2, xDiameter, yDiameter, colourDayBall, colourNightBall);
+  
   //
   //Shapes Global Variable, Shapes will not change
   shapes.add(rHexLeft); //Element 1, Left Paddle
@@ -90,6 +108,7 @@ void draw() {
   if ( instructionsOn==false ) {
     shapes.get(ballElement).paddleBounceLeft( shapes.get(paddleLeftElement).xGetter(), shapes.get(paddleLeftElement).yGetter(), shapes.get(paddleLeftElement).wGetter(), shapes.get(paddleLeftElement).hGetter() );
     shapes.get(ballElement).paddleBounceRight( shapes.get(paddleRightElement).xGetter(), shapes.get(paddleRightElement).yGetter(), shapes.get(paddleRightElement).hGetter() );
+    
     //Drawing where tokens should be
     /* for ( Shape s : shapes ) {
      s.draw();
@@ -154,7 +173,8 @@ void keyPressed()
     paddleRight.movePaddleSTOP(); //Changes the y-variable, compared to shapes.get(paddleRightElement)
     shapes.set(paddleRightElement, paddleRight);
   }//End LEFT Key
-  //
+  // 
+ 
 }//End keyPressed
 //
 void mousePressed() {
@@ -166,9 +186,9 @@ void mousePressed() {
   //Copy and Pasting local variables is not best practice
   //Use for this lesson on leveraging local variables in garbage collection
   int yDiameter;
-  int xDiameter = yDiameter = appWidth*1/90;
-  int colourDayBall = color(int( random(50, 200) ), int( random(50, 200) ), int( random(50, 200) ));
-  int colourNightBall = color(int( random(50, 200) ), int( random(50, 200) ), int( random(0) ));
+  int xDiameter = yDiameter = appWidth*2/90;
+  int colourDayBall = color(int(255), int(255), int(255));
+  int colourNightBall = color(int(255), int(255), int(255));
   Circle cHex = new Circle(appWidth*1/2, appHeight*1/2, xDiameter, yDiameter, colourDayBall, colourNightBall);
   //
   shapes.add(ballElement, cHex); //Replace BALL Element Hardcoded into void draw()
