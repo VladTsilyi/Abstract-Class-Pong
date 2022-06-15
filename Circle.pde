@@ -9,8 +9,8 @@ class Circle extends Shape {
     super(x, y, w, h);
     this.colourDayMode = colourDayParameter;
     this.resetNightMode = resetNightParameter;
-    this.ballSpeedX = ballRandomChooser(); //Best practice
-    this.ballSpeedY = ballRandomChooser(); 
+    this.ballSpeedX = 4.5; //Best practice
+    this.ballSpeedY = 4.5; 
     while ( directionX == 0 ) {
       this.directionX = int (random (-2, 2) );
     }//End WHILE
@@ -37,12 +37,12 @@ class Circle extends Shape {
     if ( x < (width*0)+w || x > width - w) { //Net Detection
       ballXGoal = true;
       if (x < (width*0)+w ) { //Goal for left player
-        x = (width*0)+(w/4);
-        y = y; //Variable becomes "final" here
+        x = width/2;
+        y = height/2; //Variable becomes "final" here
       }
       if ( x > width - w ) { //Goal for right player
-        x = (width)-(w/4);
-        y = y; //Variable becomes "final" here
+        x = width/2;
+        y = height/2; //Variable becomes "final" here
       }
     } //End Net Detection
     //
