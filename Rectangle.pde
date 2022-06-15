@@ -12,6 +12,7 @@ class Rectangle extends Shape {
     yMove = 5; //currently not configurable (i.e ! this.) , but should be
     this.moveUP = false;
     this.moveDOWN = false;
+    
   }//End Constructor
 
   //
@@ -44,6 +45,12 @@ class Rectangle extends Shape {
   }
   //
   //Setters
+  void restrict() {
+   if (y + h/2 > height){
+    y = y - yMove;
+   }
+  }
+  
   void movePaddleUP() {
     moveUP=true;
     moveDOWN=false;
